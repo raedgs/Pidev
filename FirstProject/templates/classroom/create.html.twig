@@ -1,0 +1,12 @@
+
+
+{% block body %}
+    <h1>Ajout Exercice</h1>
+    {{ form_start(form) }}
+    <table>
+
+        <tr><td>Name</td><td>{{ form_widget(form.name) }}</td></tr>
+
+    </table>
+    {{ form_end(form) }}
+{% endblock %}

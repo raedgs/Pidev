@@ -1,0 +1,19 @@
+
+<html>
+<table border="2">
+    <tr>
+        <td>id</td>
+        <td>Name</td>
+    </tr>
+    {% for p in classroom %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td><a href="{{path('show',{'id':p.id})}}">Show</a></td>
+            <td><a href="{{ path('update' ,{'id':p.id})}}" >Update</a></td>
+            <td><a href="{{ path('delete' ,{'id':p.id})}}" >Delete</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<a href="{{path('create',)}}">Add</a>
+</html>
