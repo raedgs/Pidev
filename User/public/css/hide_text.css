@@ -5,3 +5,16 @@
     height: 1.2em;
     white-space: nowrap;
 }
+
+.user {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+

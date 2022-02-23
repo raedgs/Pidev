@@ -40,7 +40,9 @@
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{ asset('css/responsive.css')}}">
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
+
+    <link rel="stylesheet" href="{{ asset('css/hide_text.css')}}">
+
     <!-- Modernizr js -->
     <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
@@ -59,9 +61,7 @@
                     <!-- Begin Header Top Left Area -->
                     <div class="col-lg-3 col-md-4">
                         <div class="header-top-left">
-                            <ul class="phone-wrap">
-                                <li><span>Telephone Enquiry:</span><a href="#">(+123) 123 321 345</a></li>
-                            </ul>
+
                         </div>
                     </div>
                     <!-- Header Top Left Area End Here -->
@@ -72,11 +72,11 @@
                                 <!-- Begin User Area -->
                                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                         <li>
-                                        <img class="profile-user-img img-fluid img-circle"
-                                            {% if app.user.image is empty %} style="width: 70px"
+                                        <img class="user"
+                                            {% if app.user.image is empty %}
                                                 src="{{ asset('dist/img/avatar5.png')}}"
                                             {% else %}
-                                                src="{{'/uploads/' ~ app.user.image }}" style="width: 70px"
+                                                src="{{'/uploads/' ~ app.user.image }}"
                                             {% endif %}
                                                  alt="User profile picture">
                                     <a href="{{path('profile_front',{'id':app.user.id})}}" style="color:Red;font-family:Rubik;font-size:24px"> {{ app.user.username }}</a>
@@ -311,59 +311,12 @@
                                         </ul>
                                     </li>
                                     <li class="dropdown-holder"><a href="blog-left-sidebar.html">Blog</a>
-                                        <ul class="hb-dropdown">
-                                            <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">Blog Grid View</a>
-                                                <ul class="hb-dropdown hb-sub-dropdown">
-                                                    <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                    <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                    <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                    <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="sub-dropdown-holder"><a href="blog-list-left-sidebar.html">Blog List View</a>
-                                                <ul class="hb-dropdown hb-sub-dropdown">
-                                                    <li><a href="blog-list.html">Blog List</a></li>
-                                                    <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                    <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="sub-dropdown-holder"><a href="blog-details-left-sidebar.html">Blog Details</a>
-                                                <ul class="hb-dropdown hb-sub-dropdown">
-                                                    <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                    <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="sub-dropdown-holder"><a href="blog-gallery-format.html">Blog Format</a>
-                                                <ul class="hb-dropdown hb-sub-dropdown">
-                                                    <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                    <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                    <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+
                                     </li>
                                     <li class="megamenu-static-holder"><a href="{{ path('home') }}">Pages</a>
                                         <ul class="megamenu hb-megamenu">
-                                            <li><a href="blog-left-sidebar.html">Blog Layouts</a>
-                                                <ul>
-                                                    <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                    <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                    <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                    <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                    <li><a href="blog-list.html">Blog List</a></li>
-                                                    <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                    <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog-details-left-sidebar.html">Blog Details Pages</a>
-                                                <ul>
-                                                    <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                    <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                    <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                    <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                    <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                </ul>
-                                            </li>
+
+
                                             <li><a href="{{ path('home') }}">Other Pages</a>
                                                 <ul>
                                                     <li><a href="{{ path('login') }}">My Account</a></li>

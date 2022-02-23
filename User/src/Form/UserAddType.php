@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 class UserAddType extends AbstractType
 {
@@ -37,6 +38,19 @@ class UserAddType extends AbstractType
             ->add('image', FileType::class, [
             'label' => 'Please upload your image' ,
                 'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new Image([
+                        'maxSize' => "10M",
+                        'mimeTypes' => [
+                            "image/jpeg",
+                            "image/jpg",
+                            "image/png",
+                            "image/gif",
+                        ],
+                        'mimeTypesMessage' => 'Type image incorrecte',
+                    ]),
+                ],
                 ]);
 
     }

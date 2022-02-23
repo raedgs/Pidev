@@ -72,7 +72,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\File( maxSize="10M", mimeTypes={"image/jpeg", "image/png", "image/jpg"} )
      */
     private $image;
 

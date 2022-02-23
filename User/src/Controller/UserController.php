@@ -150,7 +150,7 @@ class UserController extends AbstractController
             $user->setImage($filename);
 
             $em=$this->getDoctrine()->getManager();
-            $em->persist($user);
+
             $em->flush();
             return $this->redirectToRoute('user_list');
         }
@@ -177,7 +177,7 @@ class UserController extends AbstractController
             $user->setImage($filename);
 
             $em=$this->getDoctrine()->getManager();
-            $em->persist($user);
+
             $em->flush();
             return $this->redirectToRoute('home');
             $this->addFlash('Profile_Modified', 'Profile Modified Successfully!!');
