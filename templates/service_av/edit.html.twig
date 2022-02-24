@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ServiceAV{% endblock %}
+
+{% block body %}
+    <h1>Edit ServiceAV</h1>
+
+    {{ include('service_av/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('service_a_v_index') }}">Retour</a>
+
+    {{ include('service_av/_delete_form.html.twig') }}
+{% endblock %}
