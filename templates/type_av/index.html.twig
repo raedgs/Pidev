@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeAV index{% endblock %}
+
+{% block body %}
+    <h1>TypeAV index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Nature</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_a_v in type_a_vs %}
+            <tr>
+                <td>{{ type_a_v.id }}</td>
+                <td>{{ type_a_v.Description }}</td>
+                <td>{{ type_a_v.nature }}</td>
+                <td>
+                    <a href="{{ path('type_a_v_show', {'id': type_a_v.id}) }}">show</a>
+                    <a href="{{ path('type_a_v_edit', {'id': type_a_v.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_a_v_new') }}">Create new</a>
+{% endblock %}
