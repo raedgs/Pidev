@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CategorieRepository::class)
@@ -17,16 +18,19 @@ class Categorie
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("post:read")
      */
     private $id;
 
       /**
      * @ORM\Column(type="string", length=255, nullable=true)
        * @Assert\NotBlank(message="libelle obligatoire")
+       * @Groups ("post:read")
      */
     private $LibelleCategorie;
     /**
      * @ORM\OneToMany(targetEntity=produit::class, mappedBy="categorie")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $Produit;
 

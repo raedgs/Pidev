@@ -43,7 +43,6 @@ class CategorieController extends AbstractController
            $entityManager->persist($categorie);
             $entityManager->flush();
 
-
             return $this->redirectToRoute('showCat');
         }
 

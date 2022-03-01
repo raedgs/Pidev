@@ -61,6 +61,18 @@ class ProduitType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Produit::class,
+            'methode'=> 'GET',
+            'csrf_protection'=> false
         ]);
+    }
+
+
+    public function findByPrix()
+    {
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.Prix','ASC')
+            ->getQuery()
+            ->getResult()
+            ;
     }
 }

@@ -1017,23 +1017,7 @@
                                         </div>
                                     </div>
                                     <div class="paginatoin-area">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 pt-xs-15">
-                                                <p>Showing 1-12 of 13 item(s)</p>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <ul class="pagination-box pt-xs-20 pb-xs-15">
-                                                    <li><a href="#" class="Previous"><i class="fa fa-chevron-left"></i> Previous</a>
-                                                    </li>
-                                                    <li class="active"><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li>
-                                                      <a href="#" class="Next"> Next <i class="fa fa-chevron-right"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -1111,13 +1095,17 @@
                                     <h5 class="filter-sub-titel">Categories</h5>
                                     <div class="categori-checkbox">
 
+                                        {%  for produit in Produit  %}
+
                                         <form action="#">
                                             <ul>
+                                                {{produit.categorie.LibelleCategorie  }}
 
                                             </ul>
                                         </form>
-                                      
+                                        {% endfor%}
                                     </div>
+
                                  </div>
                                 <!-- filter-sub-area end -->
                                 <!-- filter-sub-area start -->
@@ -1150,20 +1138,7 @@
                                     </div>
                                 </div>
                                 <!-- filter-sub-area end -->
-                                <!-- filter-sub-area start -->
-                                <div class="filter-sub-area pt-sm-10 pb-sm-15 pb-xs-15">
-                                    <h5 class="filter-sub-titel">Dimension</h5>
-                                    <div class="categori-checkbox">
-                                        <form action="#">
-                                            <ul>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">40x60cm (6)</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">60x90cm (6)</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">80x120cm (6)</a></li>
-                                            </ul>
-                                        </form>
-                                    </div>
-                                 </div>
-                                <!-- filter-sub-area end -->
+
                             </div>
                             <!--sidebar-categores-box end  -->
                             <!-- category-sub-menu start -->
