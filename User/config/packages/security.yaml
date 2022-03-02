@@ -23,7 +23,8 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                # target: home
+            user_checker: App\Security\UserChecker
 
             remember_me:
                     name: SECURITY_DEMO

@@ -18,6 +18,8 @@ class User implements UserInterface
 {
     const ROLE_ADMIN = 'ROLE_ADMIN';
     const ROLE_VENDEUR = 'ROLE_VENDEUR';
+    const ROLE_BLOCKED = 'ROLE_BLOCKED';
+
 
     /**
      * @ORM\Id
@@ -198,6 +200,10 @@ class User implements UserInterface
     public function isVendeur(): bool
     {
         return in_array(self::ROLE_VENDEUR, $this->getRoles());
+    }
+    public function isBlocked(): bool
+    {
+        return in_array(self::ROLE_BLOCKED, $this->getRoles());
     }
 
     public function isVerified(): bool

@@ -836,15 +836,46 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Users</h1>
+            {% for flashSuccess in app.flashes('user_added') %}
+              <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+            {% endfor %}
+            {% for flashSuccess in app.flashes('user_deleted') %}
+              <div class="alert alert-danger" role="alert">{{ flashSuccess }}</div>
+            {% endfor %}
+            {% for flashSuccess in app.flashes('user_modified') %}
+              <div class="alert alert-info" role="alert">{{ flashSuccess }}</div>
+            {% endfor %}
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-            </ol>
-          </div>
+          <form name ="form1" method="post" onSubmit="actionOnSubmit()">
+            <div class="input-group input-group-lg">
+            <select id="formchoice" name="formchoice" class="select2">
+              <option value="{{ path ('recherche_email') }}">Email</option>
+              <option value="{{ path ('recherche_username') }}">UserName</option>
+            </select>
+            <input type="text" name="search" placeholder="Search"><button type="submit" class="btn btn-primary">
+              <i class="fas fa-search"></i>
+            </button>
+            </div>
+          </form>
+          <script>
+            function actionOnSubmit()
+            {
+              var e = document.getElementById("formchoice");
+              var formaction = e.options[e.selectedIndex].value;
+              document.form1.action = formaction;
+            }
+          </script>
+{#          <div class="col-sm-2 " >#}
+{#            {{ render(controller('App\\Controller\\UserController::searchBar')) }}#}
+{#              <button type="submit" class="btn btn-default">#}
+{#                <i class="fas fa-search"></i>#}
+{#              </button>#}
+{#          </div>#}
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
+
 
     <!-- Main content -->
     <section class="content">
@@ -861,6 +892,7 @@
             <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
               <i class="fas fa-times"></i>
             </button>
+
           </div>
         </div>
         <div class="card-body p-0">
@@ -921,6 +953,8 @@
                                 Vendeur
                               {% elseif role=="ROLE_ADMIN" %}
                                 Administrateur
+                              {% elseif role=="ROLE_BLOCKED" %}
+                                Blocked
                               {% endif %}
                             {% endfor %}
                           </span>
@@ -947,9 +981,18 @@
               </tbody>
           </table>
         </div>
+        <form role="search" id="nav-search-form" method="post" action="{{ path('tri_username') }}">
+              <button class="btn btn-info btn-sm">
+                tri username
+              </button>
+        </form>
+
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
+  <div class="d-flex justify-content-center">
+    {{ knp_pagination_render(user, 'back/pagination.html.twig')}}
+  </div>
       <div class="row">
         <div class="col-12">
           <a class="btn btn-success float-right" href="{{path('create_user',)}}">Create</a>
@@ -982,6 +1025,8 @@
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+<script src="{{ asset('plugins/jsgrid/jsgrid.min.js') }}"></script>
+
 
 <!-- Ask for delete (yes or no) -->
 <script>

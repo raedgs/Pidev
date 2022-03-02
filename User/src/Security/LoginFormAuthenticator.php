@@ -103,6 +103,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         {
             return new RedirectResponse($this->urlGenerator->generate('home'));
         }
+        else if($token->getUser()->isBlocked())
+        {
+            return new RedirectResponse($this->urlGenerator->generate('app_logout'));
+        }
         else
         // For example : return new RedirectResponse($this->urlGenerator->generate('home'));
         return new RedirectResponse($this->urlGenerator->generate('home'));

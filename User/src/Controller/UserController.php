@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\ProfileUpdateType;
+use App\Form\SearchEmailType;
 use App\Repository\UserRepository;
 use App\Form\UserAddType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 class UserController extends AbstractController
 {
@@ -71,9 +75,14 @@ class UserController extends AbstractController
     /**
      * @Route("/back/user_list", name="user_list")
      */
-    public function user_list()
+    public function user_list(Request $request, PaginatorInterface $paginator)
     {
         $user = $this->getDoctrine()->getRepository(User:: class)->findAll();
+        $user=$paginator->paginate(
+            $user, //on passe les données
+            $request->query->getInt('page', 1), //num de la page en cours, 1 par défaut
+            5 //nbre d'articles par page
+        );
         return $this->render('/user/user_list.html.twig', array("user" => $user));
     }
     /**
@@ -93,6 +102,7 @@ class UserController extends AbstractController
         $delete=$em->getRepository(User::class)->find($id);
         $em->remove($delete);
         $em->flush();
+        $this->addFlash('user_deleted', 'User Deleted Successfully!!');
         return $this->redirectToRoute('user_list');
     }
     /**
@@ -152,6 +162,7 @@ class UserController extends AbstractController
             $em=$this->getDoctrine()->getManager();
 
             $em->flush();
+            $this->addFlash('user_modified', 'User Modified Successfully!!');
             return $this->redirectToRoute('user_list');
         }
         return $this->render('/user/update_user.html.twig', ['UpdateForm_User'=>$form->createView() ]);
@@ -179,9 +190,95 @@ class UserController extends AbstractController
             $em=$this->getDoctrine()->getManager();
 
             $em->flush();
-            return $this->redirectToRoute('home');
             $this->addFlash('Profile_Modified', 'Profile Modified Successfully!!');
+            return $this->redirectToRoute('home');
         }
         return $this->render('/user/profile_front.html.twig', ['ProfileUpdate'=>$form->createView() ]);
     }
+
+    /**
+     * @Route("/back/user_list/tri_username", name="tri_username")
+     */
+    public function tri_username(Request $request, PaginatorInterface $paginator)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT a FROM App\Entity\User a 
+            ORDER BY a.username ASC'
+        );
+        $user = $query->getResult();
+        $user=$paginator->paginate(
+            $user, //on passe les données
+            $request->query->getInt('page', 1), //num de la page en cours, 1 par défaut
+            5 //nbre d'articles par page
+        );
+              return $this->render('/user/user_list.html.twig', array("user" => $user));
+    }
+
+    /**
+     * @Route ("/recherche_email",name="recherche_email")
+     */
+    public function recherche_email(UserRepository $repository , Request $request, PaginatorInterface $paginator)
+    {
+        $data=$request->get('search');
+        $user=$repository->SearchEmail($data);
+        $user=$paginator->paginate(
+            $user, //on passe les données
+            $request->query->getInt('page', 1), //num de la page en cours, 1 par défaut
+            5 //nbre d'articles par page
+        );
+        return $this->render('user/user_list.html.twig',array('user'=>$user));
+    }
+    /**
+     * @Route ("/recherche_username",name="recherche_username")
+     */
+    public function recherche_username(UserRepository $repository , Request $request, PaginatorInterface $paginator)
+    {
+        $data=$request->get('search');
+        $user=$repository->SearchUsername($data);
+        $user=$paginator->paginate(
+            $user, //on passe les données
+            $request->query->getInt('page', 1), //num de la page en cours, 1 par défaut
+            5 //nbre d'articles par page
+        );
+        return $this->render('user/user_list.html.twig',array('user'=>$user));
+    }
+
+//
+//    /**
+//     * @Route("/s", name="s")
+//     */
+//    public function searchBar()
+//    {
+//        $form=$this->createFormBuilder()
+//            ->setAction($this->generateUrl('search_email'))
+//            ->add('email',EmailType::class, [
+//                'label' => false ,
+//                'attr' => [
+//                    'placeholder' => 'Search',
+//                    'class' => 'form-control float-right' ,
+//                    'style' => 'width: 216px; padding-right: 5px;'
+//
+//                ]
+//            ])
+//            ->getForm();
+//        return $this->render('/user/searchemail.html.twig', ['form_searchemail'=>$form->createView() ]);
+//
+//    }
+//
+//    /**
+//     * @Route("/search_email",name="search_email")
+//     * @param Request $request
+//     */
+//    public function search_email(Request $request, UserRepository $userRepository)
+//    {
+//          $query = $request->request->get('form')['email'];
+//          if($query)
+//          {
+//              $user=$userRepository->SearchEmail($query);
+//          }
+//        return $this->render('/user/user_list.html.twig', array("user" => $user));
+//
+//    }
+
 }

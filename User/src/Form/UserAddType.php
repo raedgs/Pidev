@@ -29,7 +29,8 @@ class UserAddType extends AbstractType
                 'choices' => [
                     'Administrateur' => 'ROLE_ADMIN',
                     'Client' => 'ROLE_CLIENT',
-                    'Vendeur' => 'ROLE_VENDEUR'
+                    'Vendeur' => 'ROLE_VENDEUR',
+                    'Blocked' => 'ROLE_BLOCKED'
                 ],
                 'label' => 'Roles'
 
