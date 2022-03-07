@@ -2980,13 +2980,13 @@ text-align: center;
 	background: transparent;
 	border-bottom: 1px solid rgba(255,255,255,.1);
 }
-.li-header-4 .header-top-left > ul > li span, 
+.li-header-4 .header-top-left > ul > li span,
 .li-header-4 .header-top-left > ul > li a {
 	color: #fff;
 }
-.li-header-4 .ht-menu > li span, 
-.li-header-4 .ht-menu > li .ht-setting-trigger span::after, 
-.li-header-4 .ht-menu > li .ht-currency-trigger span::after, 
+.li-header-4 .ht-menu > li span,
+.li-header-4 .ht-menu > li .ht-setting-trigger span::after,
+.li-header-4 .ht-menu > li .ht-currency-trigger span::after,
 .li-header-4 .ht-menu > li .ht-language-trigger span::after {
 	color: #fff;
 }
@@ -2998,12 +2998,12 @@ text-align: center;
 	border-top: 1px solid rgba(255,255,255,.1);
 	color: #ffffff;
 }
-.li-header-4 .hb-menu nav > ul > li > a, 
+.li-header-4 .hb-menu nav > ul > li > a,
 .li-header-4 .hb-menu nav > ul > li > a:after {
 	color: #ffffff;
 	transition: all 0.3s ease-in-out;
 }
-.li-header-4 .hb-menu nav > ul > li:hover > a, 
+.li-header-4 .hb-menu nav > ul > li:hover > a,
 .li-header-4 .hb-menu nav > ul > li:hover > a::after {
 	color: #fed700;
 }

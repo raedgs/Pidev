@@ -40,7 +40,9 @@
         <link rel="stylesheet" href="{{ asset('css/style.css')}}">
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="{{ asset('css/responsive.css')}} ">
-        <!-- Modernizr js -->
+    <link rel="stylesheet" href="{{ asset('css/hide_text.css')}}">
+
+    <!-- Modernizr js -->
         <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
     </head>
     <body>
@@ -79,7 +81,7 @@
                             <div class="col-lg-3">
                                 <div class="logo pb-sm-30 pb-xs-30">
                                     <a href="{{ path('home') }}">
-                                        <img src="{{ asset('images/menu/logo/1.jpg') }}" alt="">
+                                        <img class="user" src="{{ asset('images/menu/logo/team_logo.jpg') }}" style="height: 130px;width: 130px;">
                                     </a>
                                 </div>
                             </div>
@@ -426,8 +428,8 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
-                                                <input type="checkbox" id="_remember_me" name="_remember_me">
-                                                <label for="_remember_me">Remember me</label>
+                                                <input type="checkbox" id="remember_me" name="_remember_me">
+                                                <label for="remember_me">Remember me</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-10 mb-20 text-left text-md-right">

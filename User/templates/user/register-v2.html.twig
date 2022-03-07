@@ -59,7 +59,12 @@
           {{ form_widget(registrationForm.image , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'Select image'}} ) }}
           {{ form_errors(registrationForm.image) }}
           <div class="input-group-append">
-
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          {{ form_widget(registrationForm.captcha , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'Enter Code'}} ) }}
+          {{ form_errors(registrationForm.captcha) }}
+          <div class="input-group-append">
           </div>
         </div>
 

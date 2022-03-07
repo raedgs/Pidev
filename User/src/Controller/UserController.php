@@ -53,22 +53,8 @@ class UserController extends AbstractController
     {
         return $this->render('/back/index.html.twig');
     }
-    /**
-     * @Route("/login_admin", name="login_admin")
-     */
-    public function login_admin(): Response
-    {
-        return $this->render('/user/login-v2.html.twig');
-    }
 
 
-    /**
-     * @Route("/back/profile_back", name="profile_back")
-     */
-    public function profile_back(): Response
-    {
-        return $this->render('/user/profile_back.html.twig');
-    }
 
     /*                       CRUD                    */
 
@@ -244,41 +230,24 @@ class UserController extends AbstractController
         return $this->render('user/user_list.html.twig',array('user'=>$user));
     }
 
-//
-//    /**
-//     * @Route("/s", name="s")
-//     */
-//    public function searchBar()
-//    {
-//        $form=$this->createFormBuilder()
-//            ->setAction($this->generateUrl('search_email'))
-//            ->add('email',EmailType::class, [
-//                'label' => false ,
-//                'attr' => [
-//                    'placeholder' => 'Search',
-//                    'class' => 'form-control float-right' ,
-//                    'style' => 'width: 216px; padding-right: 5px;'
-//
-//                ]
-//            ])
-//            ->getForm();
-//        return $this->render('/user/searchemail.html.twig', ['form_searchemail'=>$form->createView() ]);
-//
-//    }
-//
-//    /**
-//     * @Route("/search_email",name="search_email")
-//     * @param Request $request
-//     */
-//    public function search_email(Request $request, UserRepository $userRepository)
-//    {
-//          $query = $request->request->get('form')['email'];
-//          if($query)
-//          {
-//              $user=$userRepository->SearchEmail($query);
-//          }
-//        return $this->render('/user/user_list.html.twig', array("user" => $user));
-//
-//    }
+    /**
+     * @Route("/back/user_list/tri_role", name="tri_role")
+     */
+    public function tri_role(Request $request, PaginatorInterface $paginator)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT a FROM App\Entity\User a 
+            ORDER BY a.roles ASC'
+        );
+        $user = $query->getResult();
+        $user=$paginator->paginate(
+            $user, //on passe les données
+            $request->query->getInt('page', 1), //num de la page en cours, 1 par défaut
+            5 //nbre d'articles par page
+        );
+        return $this->render('/user/user_list.html.twig', array("user" => $user));
+    }
+
 
 }

@@ -69,8 +69,8 @@ class ResetPasswordController extends AbstractController
         if (null === ($resetToken = $this->getTokenObjectFromSession())) {
             $resetToken = $this->resetPasswordHelper->generateFakeResetToken();
         }
-
-        return $this->render('reset_password/check_email.html.twig', [
+        $this->addFlash('Email_Sent', 'Email Sent! Please check your inbox.');
+        return $this->render('front/base.html.twig', [
             'resetToken' => $resetToken,
         ]);
     }
