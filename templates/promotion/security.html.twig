@@ -1,0 +1,58 @@
+{% extends 'promotion.html.twig' %}
+
+{% block title %}Login {% endblock %}
+
+{% block body %}
+
+    <div class="col-sm-12 wrapper">
+
+        <div class="auth-form" style="max-width: 600px;margin: 0 auto;">
+
+            <h2 class="text-center">Login</h2>
+            <hr>
+
+            {% if error %}
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Error!</strong> {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+
+            {% endif %}
+
+            {% for message in app.flashes('success') %}
+                <div class="flash-notice alert alert-success alert-dismissible">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            <form action="{{ path('view') }}" method="post">
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" class="form-control" name="_username" value="" autocomplete="off"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" class="form-control" name="_password" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-success form-control">Login</button>
+                    </div>
+                </div>
+
+                <div class="text-center form-group">
+                    Don't have an account? <span><a href="{{ path('fronti') }}">Register</a></span>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}

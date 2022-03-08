@@ -18,6 +18,26 @@ class PromotionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Promotion::class);
     }
+    public function  nbrjr(){
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager->createQuery('SELECT s FROM App\Entity\promotion s order by s.pourcentage  DESC');
+        return $query->getResult();
+    }
+    public function  OrderByPourcentage(){
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.pourcentage', 'ASC');
+    }
+    public function  like(){
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager->createQuery('UPDATE s FROM App\Entity\promotion s set s.vote=vote+1 ');
+        return $query->getResult();
+    }
+    public function  Likes(){
+        return $this->createQueryBuilder('s')
+            ->set('s.vote','s.vote++');
+    }
+
+
 
     // /**
     //  * @return Promotion[] Returns an array of Promotion objects

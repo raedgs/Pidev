@@ -1,0 +1,39 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} PHP Phone Verification with Twilio {% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+<div id="app">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path('default') }}"> Phone Verify </a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                {% if app.user %}
+                    <li><a class="nav-link" href="{{ path('home') }}">Dashboard</a></li>
+                    <li><a class="nav-link" href="{{ path('logout') }}">Logout</a></li>
+
+                {% else %}
+
+                    <li><a class="nav-link" href="{{ path('login') }}">Login</a></li>
+                    <li><a class="nav-link" href="{{ path('user_registration') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+
+    {% block body %}{% endblock %}
+</div>
+</body>
+</html>

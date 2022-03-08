@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Codecoupone;
 use App\Entity\Promotion;
 use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\DBAL\Types\TextType;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class PromotionType extends AbstractType
 {
@@ -49,9 +51,11 @@ class PromotionType extends AbstractType
         'attr' => ['class' => 'form-control'],
         'label' =>'Description'] )
             ->add('pourcentage')
+            ->add('codecoupone')
             ->add('save', SubmitType::class,[
                 'attr'=>['class'=>'btn btn-block btn-dark btn-sm'],
                 'label' => 'valider'])
+
         ;
     }
 

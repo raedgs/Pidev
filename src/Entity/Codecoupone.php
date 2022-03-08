@@ -28,8 +28,13 @@ class Codecoupone
      * @ORM\Column(type="string", length=255)
      */
     private $code;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $pourcentage_p;
 
     /**
+     *
      * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="codecoupone")
      */
     private $promotion;
@@ -67,6 +72,18 @@ class Codecoupone
 
         return $this;
     }
+    public function getPourcentageP(): ?int
+    {
+        return $this->pourcentage_p;
+    }
+
+    public function setPourcentageP(int $pourcentage_p): self
+    {
+        $this->pourcentage_p = $pourcentage_p;
+
+        return $this;
+    }
+
 
     /**
      * @return Collection<int, Promotion>
@@ -82,10 +99,8 @@ class Codecoupone
             $this->promotion[] = $promotion;
             $promotion->setCodecoupone($this);
         }
-
         return $this;
     }
-
     public function removePromotion(Promotion $promotion): self
     {
         if ($this->promotion->removeElement($promotion)) {
@@ -96,5 +111,9 @@ class Codecoupone
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->code;
     }
 }

@@ -421,15 +421,20 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Promotion</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row margin">
 
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <tr {% for c in promotion %}>
+
+
+                        </div>
+                <table id="example2" class="table table-bordered table-hover">
+                        <div class="card-body">
+                            <table class="row margin">
+                                <div class="input-group mb-3">
+                                    {% for c in promotion %}
+
+
+
+                                    </div>
+
 
                                         <div class="card-body">
                                             <table class="row">
@@ -446,15 +451,36 @@
                                                         <small><a>debut: {{c.dated|date('d/m/Y')}}</a></small>
                                                         <div>
                                                             <small><a>fin: {{c.datef|date('d/m/Y')}}</a></small>
+                                                            <small><a>{{ c.codecoupone }}</a></small>
 
                                                         </div>
 
-                                                </div>
+
+                                                            <input   type="text" class="form-control" name="{{c.codecoupone}}"  placeholder="Donne Code Promo ici"  >
+                                                        <div class="input-group-append" {% if  c.codecoupone %}>
+
+
+
+                                                            </div>
+
+                                                        {% else %}
+                                                            <span class="input-group-text"><i class="fas fa-check"  ><a href="{{ path('fronti') }}" > sahet</a></i></span>
+                                                    {% endif %}
+                                                        <input   type="text" name="">
+                                                        {% if c.codecoupone %}
+                                                            <ul>
+                                                                {% for user in c.codecoupone%}
+                                                                    <p>{{ user.code }}</p>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        {% endif %}
 
                                         </div>
-                                    </tr {% endfor %}>
+                                    </tr >
+
                                 </table>
-                            </div></div></div></div></div></div></section>
+
+                            </div></div></div></div></div></div></section>{% endfor %}
     <!-- Quick View | Modal Area End Here -->
 </div>
 <!-- Body Wrapper End Here -->

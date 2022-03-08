@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}contact{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Nous contacter  ✅</h1>
+
+
+        <div class="col-md-9">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Compose New Message</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <p>Nom:</p>
+                        {{form(contactForm.nom)}}
+                    </div>
+                    <div class="form-group">
+                        <p>Email:</p>
+           {{ form(contactForm.email) }}
+                    </div>
+                    <div class="form-group">
+                        <p>Message:</p>
+                     {{ form(contactForm.message | raw ) }}
+
+
+                    </div>
+                    <div class="form-group">
+                        <div class="btn btn-default btn-file">
+                            <i class="fas fa-paperclip"></i> Attachment
+                            <input type="file" name="attachment">
+                        </div>
+                        <p class="help-block">Max. 32MB</p>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <div class="float-right">
+
+                        {{ form(contactForm) }}
+                    </div>
+                    <button type="reset" class="btn btn-default"<a href="{{ path('contact') }}"><i class="fas fa-times"></i> Discard</a></button>
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+
+
+
+    </div>
+{% endblock %}

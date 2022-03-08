@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}AdminLTE 3 | Dashboard{% endblock %}</title>
 
+
     <!-- Google Font: Source Sans Pro -->
     {% block stylesheets %}
     <!-- Google Font: Source Sans Pro -->
@@ -74,7 +75,6 @@
             </div>
         </div>
 
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
@@ -83,98 +83,81 @@
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            Promotion
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ path('back') }}" class="nav-link active">
+                            <a href="{{ path('addPromotion') }}" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
+                                <p>Add Promotion</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a href="{{ path('edit') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
+                                <p>Edite Promotion</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
+                            <a href="{{ path('affiche2') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
+                                <p>view Promotion</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('contact') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>contact</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('affiche') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>delet Promotion</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ path('calendary') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Widgets
+                            Calendar Promotion
                             <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ path('addCode') }}" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Layout Options
+                            Code Coupone
                             <i class="fas fa-angle-left right"></i>
                             <span class="badge badge-info right">6</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
+                            <a href="{{ path('addCode') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Top Navigation</p>
+                                <p>add Coden</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                            <a href="{{ path('affichec') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Top Navigation + Sidebar</p>
+                                <p>edit Code</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/layout/boxed.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Boxed</p>
+                                <p>affiche Code</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fixed Sidebar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fixed Navbar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-footer.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fixed Footer</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Collapsed Sidebar</p>
-                            </a>
-                        </li>
+
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -691,42 +674,26 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Ajoute promotion</h3>
+                            <h3 class="card-title">Ajoute promotion </h3>
+
                         </div>
+
             <div class="card-body">
+                <img src="{{ asset('/images/menu/logo/11.jpg') }}" class="img-circle elevation-1" alt="User Image">
                 <div class="row margin">
     {% block body %}{% endblock %}
+
         </div>
 
-    <div class="card-body pad table-responsive">
-        <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-                <div class="card-body">
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href={{ path('affiche2') }}>
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href={{ path('edit') }}>
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href={{ path('affiche') }}>
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
 
-                   </div>
+
 
 
             </ol>
         </div>
 
     </div></div></section>
+
 
 
 

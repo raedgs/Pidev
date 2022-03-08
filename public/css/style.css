@@ -655,7 +655,7 @@ textarea:focus {
 /*----------------------------------------*/
 /*  1.10 All Navigation & Pagination
 /*----------------------------------------*/
-.slider-active .owl-nav div, 
+.slider-active .owl-nav div,
 .product-active .owl-nav div, 
 .special-product-active .owl-nav div {
 	color: rgba(36,36,36,.15);
