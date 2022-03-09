@@ -12,7 +12,7 @@ class CategorieController extends AbstractController
 {
 
   /**
-     * @Route("/back/show_cat", name="showCat")
+     * @Route("/vendeur/show_cat", name="showCat")
      */
     public function show()
     {
@@ -21,7 +21,7 @@ class CategorieController extends AbstractController
     }
  
     /**
-     * @Route("/back/addCategorie", name="addCategorie")
+     * @Route("/vendeur/addCategorie", name="addCategorie")
      */
     public function addCategorie(Request $request): Response
     {
@@ -45,7 +45,7 @@ class CategorieController extends AbstractController
         ]);
     }
     /**
-     * @Route("/back/categorie/delete{id}", name="delete_cat")
+     * @Route("/vendeur/categorie/delete{id}", name="delete_cat")
 
      */
     public function delete($id){
@@ -60,7 +60,7 @@ class CategorieController extends AbstractController
     }
 
     /**
-     * @Route("/back/categorie/modify{id}", name="modify_cat")
+     * @Route("/vendeur/categorie/modify{id}", name="modify_cat")
      */
     public function modify(Request $request, int $id): Response
     {

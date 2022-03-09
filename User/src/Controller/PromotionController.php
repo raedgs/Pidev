@@ -343,5 +343,15 @@ function Recherche (PromotionRepository $repository , request $request){
         return $this->render('promotion/lawla.html.twig',
             ['promotion'=>$promotion]);
     }
+    /**
+     * @Route("/offre", name="offre")
+     */
+    public function offre()
+    {
 
+        $repo=$this->getDoctrine()->getRepository(Promotion::class);
+        $promotion=$repo->findAll();
+        return $this->render('promotion/offre.html.twig',
+            ['promotion'=>$promotion]);
+    }
 }

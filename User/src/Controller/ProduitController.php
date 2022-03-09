@@ -30,7 +30,7 @@ class ProduitController extends AbstractController
 
 
      /**
-     * @Route("/back/addProduit", name="addProduit")
+     * @Route("/vendeur/addProduit", name="addProduit")
      */
     public function addProduit(Request $request): Response
     {
@@ -62,7 +62,7 @@ class ProduitController extends AbstractController
         ]);
     }
     /**
-     * @Route("/back/show_prod", name="showProd")
+     * @Route("/vendeur/show_prod", name="showProd")
      */
     public function show(Request $request,PaginatorInterface $paginator)
     {
@@ -87,7 +87,7 @@ class ProduitController extends AbstractController
     }
 
       /**
-     * @Route("/show/{id}", name="produit_show", methods={"GET"}))
+     * @Route("/showv/{id}", name="produit_show", methods={"GET"}))
      */
     public function showP(Produit $produit): Response
     {
@@ -97,7 +97,7 @@ class ProduitController extends AbstractController
     }
 
     /**
-     * @Route("/back/produit/delete{id}", name="delete_prod")
+     * @Route("/vendeur/produit/delete{id}", name="delete_prod")
 
      */
     public function delete($id){
@@ -111,7 +111,7 @@ class ProduitController extends AbstractController
         return $this->redirectToRoute('showProd');
     }
     /**
-     * @Route("/back/produit/modify{id}", name="modify_prod")
+     * @Route("/vendeur/produit/modify{id}", name="modify_prod")
      */
     public function modify(Request $request, int $id): Response
     {        /** @var UploadedFile $file */
@@ -184,7 +184,7 @@ class ProduitController extends AbstractController
     }
 
     /**
-     * @route("/back/stat",name="sta")
+     * @route("/vendeur/stat",name="sta")
      */
     public function statisti(ProduitRepository $repository,CategorieRepository $categorieRepository)
     {
@@ -255,7 +255,7 @@ class ProduitController extends AbstractController
     }
 
     /**
-     * @Route("/back/imprimer_prod", name="imprimer_prod")
+     * @Route("/vendeur/imprimer_prod", name="imprimer_prod")
      */
     public function imprimeprod(ProduitRepository $produitRepository): Response
     {
