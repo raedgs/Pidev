@@ -45,8 +45,8 @@ security:
         - { path: '^/login', roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/register', roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/reset-password', roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: '^/back', roles: ROLE_ADMIN }
-        - { path: '^/back/v', roles: ROLE_VENDEUR }
+        - { path: '^/back', roles: [ROLE_ADMIN, ROLE_VENDEUR]  }
+        - { path: '^/backv', roles: ROLE_VENDEUR }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
     role_hierarchy:

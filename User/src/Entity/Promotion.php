@@ -46,14 +46,18 @@ class Promotion
      */
     private $codecoupone;
 
+
+
     /**
-     * @ORM\OneToMany(targetEntity=Postlike::class, mappedBy="post")
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="promotion")
      */
-    private $likes;
+    private $produit;
+
+
 
     public function __construct()
     {
-        $this->likes = new ArrayCollection();
+        $this->produit = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,43 +133,41 @@ class Promotion
     public function __toString()
     {
         return $this->Codecoupone;
+
     }
+
+
+
 
     /**
-     * @return Collection<int, Postlike>
+     * @return Collection|Produit[]
      */
-    public function getLikes(): Collection
+    public function getProduit(): Collection
     {
-        return $this->likes;
-    }
-    public function setLikes(?Likes $likes): self
-    {
-        $this->likes = $likes;
-
-        return $this;
+        return $this->produit;
     }
 
-
-    public function addLike(Postlike $like): self
+    public function addProduit(Produit $produit): self
     {
-        if (!$this->likes->contains($like)) {
-            $this->likes[] = $like;
-            $like->setPost($this);
+        if (!$this->produit->contains($produit)) {
+            $this->produit[] = $produit;
+            $produit->setPromotion($this);
         }
 
         return $this;
     }
 
-    public function removeLike(Postlike $like): self
+    public function removeProduit(Produit $produit): self
     {
-        if ($this->likes->removeElement($like)) {
+        if ($this->produit->removeElement($produit)) {
             // set the owning side to null (unless already changed)
-            if ($like->getPost() === $this) {
-                $like->setPost(null);
+            if ($produit->getPromotion() === $this) {
+                $produit->setPromotion(null);
             }
         }
 
         return $this;
     }
+
 
 }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Produit;
 use App\Entity\Categorie;
+use App\Entity\Promotion;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -51,6 +52,9 @@ class ProduitType extends AbstractType
             ])
             ->add('categorie', EntityType::class,
             array('class' =>Categorie::class,'choice_label' =>'LibelleCategorie'))
+            ->add('Promotion', EntityType::class,
+                array('class' =>Promotion::class,'choice_label' =>'pourcentage'))
+
 
             ->add('save', SubmitType::class,
             ['label' => 'valider'])

@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>Shopping Cart || limupa - Digital Products Store eCommerce Bootstrap 4 Template</title>
+		<title>BrainTech</title>
 		<meta name="description" content="">
 		<meta
 		name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +75,6 @@
 							<!-- Begin Header Top Left Area -->
 							<div class="col-lg-3 col-md-4">
 								<div class="header-top-left">
-
 								</div>
 							</div>
 							<!-- Header Top Left Area End Here -->
@@ -108,6 +107,9 @@
 						</div>
 					</div>
 				</div>
+				{% for flashSuccess in app.flashes('reclamation_added') %}
+					<div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+				{% endfor %}
 				{% for flashSuccess in app.flashes('success') %}
 					<div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
 				{% endfor %}
@@ -135,14 +137,6 @@
 							<!-- Begin Header Middle Right Area -->
 							<div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
 								<!-- Begin Header Middle Searchbox Area -->
-								<form action="#" class="hm-searchbox">
-									<select class="nice-select select-search-category">
-										<option value="0">All</option>
-										<option value="16">Accessories</option>
-									</select>
-									<input type="text" placeholder="Enter your search key ...">
-									<button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
-								</form>
 								<!-- Header Middle Searchbox Area End Here -->
 								<!-- Begin Header Middle Right Area -->
 								<div class="header-middle-right">
@@ -198,27 +192,13 @@
 								<div class="hb-menu">
 									<nav>
 										<ul>
-											<li class="dropdown-holder"><a href="{{ path('home') }}">Home</a>
-												<ul class="hb-dropdown">
-													<li class="active"><a href="{{ path('home') }}">Home One</a></li>
-													<li><a href="{{ path('index-2') }}">Home Two</a></li>
-													<li><a href="{{ path('index-3') }}">Home Three</a></li>
-													<li><a href="index-4.html">Home Four</a></li>
-												</ul>
-											</li>
-											<li class="dropdown-holder"><a href="{{ path('home') }}">Shop</a>
-												<ul class="hb-dropdown">
-													<li class="active"><a href="{{ path('home') }}">Home One</a></li>
-													<li><a href="{{ path('index-2') }}">Home Two</a></li>
-													<li><a href="{{ path('index-3') }}">Home Three</a></li>
-													<li><a href="index-4.html">Home Four</a></li>
-												</ul>
-											</li>
+											<li class=""><a href="{{ path('home') }}">Home</a></li>
+											<li><a href="">Offre</a></li>
+											<li><a href="{{ path('envoyer-reclamation') }}">Reclamation</a></li>
+											<li><a href="{{ path('panier_index') }}">Commande</a></li>
+											<li></li>
+											<li><a href="{{ path('service_a_v_ajoutS') }}">ServiceAv</a></li>
 
-											<li><a href="about-us.html">About Us</a></li>
-											<li><a href="">Contact</a></li>
-											<li><a href=""></a></li>
-											<li><a href="">Accessories</a></li>
 										</ul>
 									</nav>
 								</div>
@@ -307,9 +287,7 @@
 														<span class="amount">{{ item.produit.prix * item.qte }}
 															DT</span>
 													</td>
-													<td class="li-product-name">
-														<input class="button" name="apply_coupon" value="Ajouter Commande" type="submit">
-													</td>
+
 												</tr>
 											{% endfor %}
 
@@ -322,9 +300,7 @@
 								<div class="col-12">
 									<div class="coupon-all">
 										<div class="coupon">
-											<input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-											<input class="button" name="apply_coupon" value="Apply coupon" type="submit">
-										</div>
+											<a class="button" href="{{ path('addcom') }}">Ajouter Commande</a>										</div>
 
 									</div>
 								</div>

@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Codecoupone;
 use App\Entity\Promotion;
+use App\Entity\Produit;
+
 use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;

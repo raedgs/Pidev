@@ -101,7 +101,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         }
         else if($token->getUser()->isVendeur())
         {
-            return new RedirectResponse($this->urlGenerator->generate('home'));
+            return new RedirectResponse($this->urlGenerator->generate('showProd'));
         }
         else if($token->getUser()->isBlocked())
         {

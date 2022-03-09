@@ -42,7 +42,7 @@ class PromotionController extends AbstractController
         ]);
     }
     /**
-     * *@Route ("/addPromotion", name="addPromotion")
+     * *@Route ("/back/addPromotion", name="addPromotion")
      */
     public function addPromotion(Request $request): Response
     {
@@ -65,7 +65,7 @@ class PromotionController extends AbstractController
     }
 
     /**
-     * @Route("promotion/affiche/{id}", name="u")
+     * @Route("/back/promotion/affiche/{id}", name="u")
      */
     public function Edit(PromotionRepository $repository,$id, Request $request ):response
     {
@@ -88,7 +88,7 @@ class PromotionController extends AbstractController
         ]);
     }
     /**
-     * @Route("/affiche/{id}", name="dd")
+     * @Route("/back/affiche/{id}", name="dd")
      */
     public function delete($id)
     {
@@ -140,7 +140,7 @@ class PromotionController extends AbstractController
     }
 **/
     /**
-     * @Route("/Supp/{id}", name="d")
+     * @Route("/back/Supp/{id}", name="d")
      */
     function remove($id,PromotionRepository $repository)
     {

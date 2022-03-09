@@ -34,13 +34,11 @@ class LivraisonController extends AbstractController
     public function show()
     {
         $Livraison = $this->getDoctrine()->getRepository(Livraison::class)->findAll();
-
         return $this->render('livraison/showLiv.html.twig', array('Livraison' => $Livraison));
     }
     /**
      * @Route("/addliv", name="addliv")
      */
-
     public function addliv(Request $request): Response
     {
         $Livraison = new Livraison();

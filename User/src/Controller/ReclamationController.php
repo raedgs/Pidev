@@ -12,6 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\User;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -20,7 +22,7 @@ use Dompdf\Options;
 class ReclamationController extends AbstractController
 {
     /**
-     * @Route("/reclamation", name="reclamation_index", methods={"GET"})
+     * @Route("/back/reclamation", name="reclamation_index", methods={"GET"})
      */
     public function index(ReclamationRepository $reclamationRepository): Response
     {
@@ -31,13 +33,15 @@ class ReclamationController extends AbstractController
     }
 
     /**
-     * @Route("/reclamation_new", name="reclamation_new")
+     * @Route("/back/reclamation_new", name="reclamation_new")
      */
     public function new(Request $request)
     {
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
+        $userid=$this->getUser();
+        $reclamation->setUser($userid);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -60,7 +64,10 @@ class ReclamationController extends AbstractController
     public function envoyer(Request $request)
     {
         $reclamation = new Reclamation();
-        $form = $this->createForm(EnvoyerReclamationType::class, $reclamation);$form->handleRequest($request);
+        $form = $this->createForm(EnvoyerReclamationType::class, $reclamation);
+        $form->handleRequest($request);
+        $userid=$this->getUser();
+        $reclamation->setUser($userid);
     $data=$form->getData();
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -78,7 +85,7 @@ $this->addFlash('reclamation_added','Reclamation ajoutée avec succées' );
     }
 
     /**
-     * @Route("/reclamation/{id}", name="reclamation_show", methods={"GET"})
+     * @Route("/back/reclamation/{id}", name="reclamation_show", methods={"GET"})
      */
     public function show(Reclamation $reclamation): Response
     {
@@ -88,7 +95,7 @@ $this->addFlash('reclamation_added','Reclamation ajoutée avec succées' );
     }
 
     /**
-     * @Route("/reclamation/{id}/edit", name="reclamation_edit", methods={"GET", "POST"})
+     * @Route("/back/reclamation/{id}/edit", name="reclamation_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request,ReclamationRepository $repository,Reclamation $reclamation, EntityManagerInterface $entityManager,$id)
     { $reclamation = $repository->find($id);
@@ -109,7 +116,7 @@ $this->addFlash('reclamation_added','Reclamation ajoutée avec succées' );
     }
 
     /**
-     * @Route("/reclamation/delete/{id}", name="reclamation_delete", methods={"POST"})
+     * @Route("/back/reclamation/delete/{id}", name="reclamation_delete", methods={"POST"})
      */
     public function delete($id)
     {
@@ -123,35 +130,51 @@ $this->addFlash('reclamation_added','Reclamation ajoutée avec succées' );
     }
 
     /**
-     * @Route("/listReclamation", name="reclamation_list", methods={"GET"})
+     * @Route("/imprimer_recl", name="imprimer_recl")
      */
-    public function listReclamation (ReclamationRepository $reclamationRepository) : Response
+    public function imprimevol(ReclamationRepository $ReclamationRepository): Response
     {
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
 
-        // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
 
+        $recl = $ReclamationRepository->findAll();
 
-        // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('reclamation/listReclamation.html.twig', [
-            'reclamations' => $reclamationRepository->findAll(),
+        $html = $this -> renderView('reclamation/pdfrecl.html.twig', [
+            'recl' => $recl,
         ]);
 
-        // Load HTML to Dompdf
         $dompdf->loadHtml($html);
 
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A3', 'portrait');
+        $dompdf->setPaper('A4', 'portrait');
 
-        // Render the HTML as PDF
         $dompdf->render();
 
-        // Output the generated PDF to Browser (force download)
-        $dompdf->stream("mypdf.pdf", [
-            "Attachment" => false
+        $dompdf->stream("Liste  reclamation.pdf", [
+            "Attachment" => true
         ]);
 
+        return $this->redirectToRoute('imprimer_recl');
+    }
+
+    /**
+     * @Route("/back/search", name="serie-search")
+     */
+    public function searchSeries(ReclamationRepository $testrepository, Request $request)
+    {
+        $tests = $testrepository->findByNamePopular(
+            $request->query->get('query')
+        );
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $categorieRepository=$entityManager->getRepository(Reclamation::class);
+
+
+        return $this->render('reclamation/afficheRecl.html.twig', [
+            'controller_name' => 'ReclamationController',
+            'reclamations'=>$tests,
+
+        ]);
     }
 }

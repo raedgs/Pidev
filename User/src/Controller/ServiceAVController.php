@@ -21,12 +21,12 @@ use Knp\Component\Pager\PaginatorInterface;
 
 
 /**
- * @Route("/back/service/a/v")
+ * @Route("/service/a/v")
  */
 class ServiceAVController extends AbstractController
 {
     /**
-     * @Route("/", name="service_a_v_index", methods={"GET"})
+     * @Route("/back", name="service_a_v_index", methods={"GET"})
      */
     public function index(Request $request,ServiceAVRepository $serviceAVRepository ,PaginatorInterface $paginator): Response
     {
@@ -42,7 +42,7 @@ class ServiceAVController extends AbstractController
 
 
     /**
-     * @Route("/new", name="service_a_v_new", methods={"GET", "POST"})
+     * @Route("/back/new", name="service_a_v_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -66,7 +66,7 @@ class ServiceAVController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="service_a_v_show", methods={"GET"})
+     * @Route("/back/{id}", name="service_a_v_show", methods={"GET"})
      */
     public function show(ServiceAV $serviceAV): Response
     {
@@ -75,7 +75,7 @@ class ServiceAVController extends AbstractController
         ]);
     }
     /**
-     * @Route("/afficheserv", name="affichserv", methods={"GET"})
+     * @Route("/back/afficheserv", name="affichserv", methods={"GET"})
      */
     public function showw(ServiceAV $serviceAV): Response
     {
@@ -85,7 +85,7 @@ class ServiceAVController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="service_a_v_edit", methods={"GET", "POST"})
+     * @Route("/back/{id}/edit", name="service_a_v_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, ServiceAV $serviceAV, EntityManagerInterface $entityManager, FlashyNotifier $flashy): Response
     {
@@ -104,7 +104,7 @@ class ServiceAVController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="service_a_v_delete", methods={"POST"})
+     * @Route("/back/{id}", name="service_a_v_delete", methods={"POST"})
      */
     public function delete(Request $request, ServiceAV $serviceAV, EntityManagerInterface $entityManager): Response
     {
@@ -139,7 +139,7 @@ class ServiceAVController extends AbstractController
         ]);
     }
     /**
-     * @Route("/test/test/stats", name="stats", methods={"GET", "POST"})
+     * @Route("/back/test/test/stats", name="stats", methods={"GET", "POST"})
      */
     public function indexAction()
     {

@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>Shopping Cart || limupa - Digital Products Store eCommerce Bootstrap 4 Template</title>
+		<title>BrainTech</title>
 		<meta name="description" content="">
 		<meta
 		name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +23,8 @@
 		<link
 		rel="stylesheet" href="{{ asset('css/fontawesome-stars.css')}} ">
 		<!-- Meanmenu CSS -->
+		<link rel="stylesheet" href="{{ asset('css/hide_text.css')}}">
+
 		<link
 		rel="stylesheet" href="{{ asset('css/meanmenu.css')}} ">
 		<!-- owl carousel CSS -->
@@ -66,7 +68,158 @@
 		<div
 			class="body-wrapper">
 			<!-- Begin Header Area -->
-			{% include "header.html.twig" %}
+			<header>
+				<!-- Begin Header Top Area -->
+				<div class="header-top">
+					<div class="container">
+						<div class="row">
+							<!-- Begin Header Top Left Area -->
+							<div class="col-lg-3 col-md-4">
+								<div class="header-top-left">
+								</div>
+							</div>
+							<!-- Header Top Left Area End Here -->
+							<!-- Begin Header Top Right Area -->
+							<div class="col-lg-9 col-md-8">
+								<div class="header-top-right">
+									<ul class="ht-menu">
+										<!-- Begin User Area -->
+										{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+											<li>
+												<img class="user"
+														{% if app.user.image is empty %}
+															src="{{ asset('dist/img/avatar5.png')}}"
+														{% else %}
+															src="{{'/uploads/' ~ app.user.image }}"
+														{% endif %}
+													 alt="User profile picture">
+												<a href="{{path('profile_front',{'id':app.user.id})}}" style="color:Red;font-family:Rubik;font-size:24px"> {{ app.user.username }}</a>
+											</li>
+										{% else %}
+											<li class="fa fa-user" style='font-size:29px;color:black'>
+												<a href="{{ path('login') }}" style="color:Red;font-family:Rubik;font-size:24px"> Login</a>
+											</li>
+										{% endif %}
+										<!-- User Area End Here -->
+									</ul>
+								</div>
+							</div>
+							<!-- Header Top Right Area End Here -->
+						</div>
+					</div>
+				</div>
+				{% for flashSuccess in app.flashes('reclamation_added') %}
+					<div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+				{% endfor %}
+				{% for flashSuccess in app.flashes('success') %}
+					<div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+				{% endfor %}
+				{% for flashSuccess in app.flashes('Profile_Modified') %}
+					<div class="alert alert-info" role="alert">{{ flashSuccess }}</div>
+				{% endfor %}
+				{% for flashSuccess in app.flashes('Email_Sent') %}
+					<div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+				{% endfor %}
+
+				<!-- Header Top Area End Here -->
+				<!-- Begin Header Middle Area -->
+				<div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+					<div class="container">
+						<div class="row">
+							<!-- Begin Header Logo Area -->
+							<div class="col-lg-3">
+								<div class="logo pb-sm-30 pb-xs-30">
+									<a href="{{ path('home') }}">
+										<img class="user" src="{{ asset('images/menu/logo/team_logo.jpg') }}" style="height: 130px;width: 130px;">
+									</a>
+								</div>
+							</div>
+							<!-- Header Logo Area End Here -->
+							<!-- Begin Header Middle Right Area -->
+							<div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+								<!-- Begin Header Middle Searchbox Area -->
+								<!-- Header Middle Searchbox Area End Here -->
+								<!-- Begin Header Middle Right Area -->
+								<div class="header-middle-right">
+									<ul class="hm-menu">
+										<!-- Begin Header Middle Wishlist Area -->
+										<li class="hm-wishlist">
+											<a href="wishlist.html">
+												<span class="cart-item-count wishlist-item-count">0</span>
+												<i class="fa fa-heart-o"></i>
+											</a>
+										</li>
+										<!-- Header Middle Wishlist Area End Here -->
+										<!-- Begin Header Mini Cart Area -->
+										<li class="hm-minicart">
+											<div class="hm-minicart-trigger">
+												<span class="item-icon"></span>
+												<span class="item-text">
+										<span id="total1">0 DT</span>
+										<span class="cart-item-count" id="cart-counter">0</span>
+									</span>
+											</div>
+											<span></span>
+											<div class="minicart">
+												<p class="minicart-total">Total:
+													<span id="total2">0 DT</span>
+												</p>
+												<div class="minicart-button">
+													<a href="{{path('panier_index')}}" class="li-button li-button-fullwidth li-button-dark">
+														<span>View Cart</span>
+													</a>
+													<a href="#" class="li-button li-button-fullwidth">
+														<span>Checkout</span>
+													</a>
+												</div>
+											</div>
+										</li>
+										<!-- Header Mini Cart Area End Here -->
+									</ul>
+								</div>
+								<!-- Header Middle Right Area End Here -->
+							</div>
+							<!-- Header Middle Right Area End Here -->
+						</div>
+					</div>
+				</div>
+				<!-- Header Middle Area End Here -->
+				<!-- Begin Header Bottom Area -->
+				<div class="header-bottom header-sticky d-none d-lg-block d-xl-block">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<!-- Begin Header Bottom Menu Area -->
+								<div class="hb-menu">
+									<nav>
+										<ul>
+											<li class=""><a href="{{ path('home') }}">Home</a></li>
+											<li><a href="">Offre</a></li>
+											<li><a href="{{ path('envoyer-reclamation') }}">Reclamation</a></li>
+											<li><a href="{{ path('panier_index') }}">Commande</a></li>
+											<li></li>
+											<li><a href="{{ path('service_a_v_ajoutS') }}">ServiceAv</a></li>
+
+										</ul>
+									</nav>
+								</div>
+								<!-- Header Bottom Menu Area End Here -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Header Bottom Area End Here -->
+				<!-- Begin Mobile Menu Area -->
+				<div class="mobile-menu-area d-lg-none d-xl-none col-12">
+					<div class="container">
+						<div class="row">
+							<div class="mobile-menu">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Mobile Menu Area End Here -->
+			</header>
 			<!-- Header Area End Here -->
 			<!-- Begin Li's Breadcrumb Area -->
 				<div class="breadcrumb-area"> <div class="container">
@@ -109,7 +262,6 @@
 							<div class="card-body">
 								<div class="content-header">
 									<div class="form-group">
-										{{form(formD)}}
 											{{form_start(formD,{'attr': {'novalidate':'novalidate'}})}}
 											{{form_label(formD.montant)}}
 											{{ form_widget (formD.montant)}}

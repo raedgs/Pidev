@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Liste De Produits</title>
+    <title>BrainTech</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -60,7 +60,6 @@
                     <!-- Begin Header Top Left Area -->
                     <div class="col-lg-3 col-md-4">
                         <div class="header-top-left">
-
                         </div>
                     </div>
                     <!-- Header Top Left Area End Here -->
@@ -93,6 +92,9 @@
                 </div>
             </div>
         </div>
+        {% for flashSuccess in app.flashes('reclamation_added') %}
+            <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+        {% endfor %}
         {% for flashSuccess in app.flashes('success') %}
             <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
         {% endfor %}
@@ -120,14 +122,6 @@
                     <!-- Begin Header Middle Right Area -->
                     <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                         <!-- Begin Header Middle Searchbox Area -->
-                        <form action="#" class="hm-searchbox">
-                            <select class="nice-select select-search-category">
-                                <option value="0">All</option>
-                                <option value="16">Accessories</option>
-                            </select>
-                            <input type="text" placeholder="Enter your search key ...">
-                            <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
-                        </form>
                         <!-- Header Middle Searchbox Area End Here -->
                         <!-- Begin Header Middle Right Area -->
                         <div class="header-middle-right">
@@ -183,27 +177,13 @@
                         <div class="hb-menu">
                             <nav>
                                 <ul>
-                                    <li class="dropdown-holder"><a href="{{ path('home') }}">Home</a>
-                                        <ul class="hb-dropdown">
-                                            <li class="active"><a href="{{ path('home') }}">Home One</a></li>
-                                            <li><a href="{{ path('index-2') }}">Home Two</a></li>
-                                            <li><a href="{{ path('index-3') }}">Home Three</a></li>
-                                            <li><a href="index-4.html">Home Four</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-holder"><a href="{{ path('home') }}">Shop</a>
-                                        <ul class="hb-dropdown">
-                                            <li class="active"><a href="{{ path('home') }}">Home One</a></li>
-                                            <li><a href="{{ path('index-2') }}">Home Two</a></li>
-                                            <li><a href="{{ path('index-3') }}">Home Three</a></li>
-                                            <li><a href="index-4.html">Home Four</a></li>
-                                        </ul>
-                                    </li>
+                                    <li class=""><a href="{{ path('home') }}">Home</a></li>
+                                    <li><a href="">Offre</a></li>
+                                    <li><a href="{{ path('envoyer-reclamation') }}">Reclamation</a></li>
+                                    <li><a href="{{ path('panier_index') }}">Commande</a></li>
+                                    <li></li>
+                                    <li><a href="{{ path('service_a_v_ajoutS') }}">ServiceAv</a></li>
 
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="">Contact</a></li>
-                                    <li><a href=""></a></li>
-                                    <li><a href="">Accessories</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -474,7 +454,75 @@
                                                             <div class="price-box">
                                                                 <span class="new-price">Prix:{{  produit.prix }} dt</span>
                                                             </div>
+                                                            {% if produit.promotion.pourcentage is defined and produit.promotion.pourcentage is not null %}
+                                                            <div class="price-box">
+                                                                <span class="new-price">Promotion:{{  produit.promotion.pourcentage }} %</span>
+                                                            </div>
+                                                            {% endif %}
                                                             {{ produit.description }}
+                                                            <div class="Likes-box">
+                                                                <a href="{{ path('post_like',{'id': produit.idproduit}) }}" class="btn btn-link js-like">
+                                                                    <i class="fas fa-thumbs-up"></i>
+                                                                    <span class="js-likes">{{ produit.likes | length }}</span>
+                                                                    <span class="js-label">Like</span>
+                                                                </a>
+                                                                <a href="{{ path('post_dislike',{'id': produit.idproduit}) }}" class="btn btn-link js-dislike">
+
+                                                                    <i class="far fa-thumbs-down"></i>
+
+                                                                    <span class="js-dislikes">{{ produit.dislikes | length }}</span>
+                                                                    <span class="js-labels">Dislike</span>
+                                                                </a>
+
+                                                                <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                                                                <script>
+                                                                    function onClickbtnLike(event){
+                                                                        event.preventDefault();
+
+                                                                        const url = this.href;
+
+                                                                        const spanCount=this.querySelector('span.js-likes');
+
+                                                                        axios.get(url).then(function(response){
+
+                                                                            spanCount.textContent=response.data.likes;
+
+                                                                        })
+                                                                    }
+
+
+                                                                    document.querySelectorAll('a.js-like').forEach(function(link){
+                                                                        link.addEventListener('click',onClickbtnLike);
+                                                                    })
+
+
+                                                                </script>
+                                                                <script>
+                                                                    //aff-dislike
+
+
+                                                                    function onClickbtndisLike(event){
+                                                                        event.preventDefault();
+
+                                                                        const url = this.href;
+
+                                                                        const spanCount=this.querySelector('span.js-dislikes');
+
+                                                                        axios.get(url).then(function(response){
+
+                                                                            spanCount.textContent=response.data.likes;
+
+                                                                        })
+                                                                    }
+
+
+                                                                    document.querySelectorAll('a.js-dislike').forEach(function(link){
+                                                                        link.addEventListener('click',onClickbtndisLike);
+                                                                    })
+                                                                </script>
+
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -502,151 +550,10 @@
                 </div>
                 <div class="col-lg-3 order-2 order-lg-1">
                     <!--sidebar-categores-box start  -->
-                    <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
-                        <div class="sidebar-title">
-                            <h2>Laptop</h2>
-                        </div>
-                        <!-- category-sub-menu start -->
-                        <div class="category-sub-menu">
-                            <ul>
-                                <li class="has-sub"><a href="# ">Prime Video</a>
-                                    <ul>
-                                        <li><a href="#">All Videos</a></li>
-                                        <li><a href="#">Blouses</a></li>
-                                        <li><a href="#">Evening Dresses</a></li>
-                                        <li><a href="#">Summer Dresses</a></li>
-                                        <li><a href="#">T-Rent or Buy</a></li>
-                                        <li><a href="#">Your Watchlist</a></li>
-                                        <li><a href="#">Watch Anywhere</a></li>
-                                        <li><a href="#">Getting Started</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-sub"><a href="#">Computer</a>
-                                    <ul>
-                                        <li><a href="#">TV & Video</a></li>
-                                        <li><a href="#">Audio & Theater</a></li>
-                                        <li><a href="#">Camera, Photo</a></li>
-                                        <li><a href="#">Cell Phones</a></li>
-                                        <li><a href="#">Headphones</a></li>
-                                        <li><a href="#">Video Games</a></li>
-                                        <li><a href="#">Wireless Speakers</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-sub"><a href="#">Electronics</a>
-                                    <ul>
-                                        <li><a href="#">Amazon Home</a></li>
-                                        <li><a href="#">Kitchen & Dining</a></li>
-                                        <li><a href="#">Bed & Bath</a></li>
-                                        <li><a href="#">Appliances</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- category-sub-menu end -->
-                    </div>
                     <!--sidebar-categores-box end  -->
                     <!--sidebar-categores-box start  -->
-                    <div class="sidebar-categores-box">
-                        <div class="sidebar-title">
-                            <h2>Filter By</h2>
-                        </div>
-                        <!-- btn-clear-all start -->
-                        <button class="btn-clear-all mb-sm-30 mb-xs-30">Clear all</button>
-                        <!-- btn-clear-all end -->
-                        <!-- filter-sub-area start -->
-                        <!-- <div class="filter-sub-area">
-                            <h5 class="filter-sub-titel">Brand</h5>
-                            <div class="categori-checkbox">
-                                <form action="#">
-                                    <ul>
-                                        <li><input type="checkbox" name="product-categori"><a href="#">Prime Video (13)</a></li>
-                                        <li><input type="checkbox" name="product-categori"><a href="#">Computers (12)</a></li>
-                                        <li><input type="checkbox" name="product-categori"><a href="#">Electronics (11)</a></li>
-                                    </ul>
-                                </form>
-                            </div>
-                         </div>-->
-                        <!-- filter-sub-area end -->
-                        <!-- filter-sub-area start -->
-                        <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                            <h5 class="filter-sub-titel">Categories</h5>
-                            <div class="categori-checkbox">
-                                {%  for produit in Produit  %}
-                                    <form action="#">
-                                        <ul>
-                                            <li><input type="checkbox" name="product-categori">
-                                                {{  produit.categorie.LibelleCategorie }}
-
-                                        </ul>
-                                    </form>
-                                {% endfor%}
-                            </div>
-                        </div>
-
-                        <!-- filter-sub-area end -->
-                        <!-- filter-sub-area start -->
-                        <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                            <h5 class="filter-sub-titel">Size</h5>
-                            <div class="size-checkbox">
-                                <form action="#">
-                                    <ul>
-                                        <li><input type="checkbox" name="product-size"><a href="#">S (3)</a></li>
-                                        <li><input type="checkbox" name="product-size"><a href="#">M (3)</a></li>
-                                        <li><input type="checkbox" name="product-size"><a href="#">L (3)</a></li>
-                                        <li><input type="checkbox" name="product-size"><a href="#">XL (3)</a></li>
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- filter-sub-area end -->
-                        <!-- filter-sub-area start -->
-                        <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                            <h5 class="filter-sub-titel">Color</h5>
-                            <div class="color-categoriy">
-                                <form action="#">
-                                    <ul>
-                                        <li><span class="white"></span><a href="#">White (1)</a></li>
-                                        <li><span class="black"></span><a href="#">Black (1)</a></li>
-                                        <li><span class="Orange"></span><a href="#">Orange (3) </a></li>
-                                        <li><span class="Blue"></span><a href="#">Blue  (2) </a></li>
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- filter-sub-area end -->
-                        <!-- filter-sub-area start -->
-                        <div class="filter-sub-area pt-sm-10 pb-sm-15 pb-xs-15">
-                            <h5 class="filter-sub-titel">Dimension</h5>
-                            <div class="categori-checkbox">
-                                <form action="#">
-                                    <ul>
-                                        <li><input type="checkbox" name="product-categori"><a href="#">40x60cm (6)</a></li>
-                                        <li><input type="checkbox" name="product-categori"><a href="#">60x90cm (6)</a></li>
-                                        <li><input type="checkbox" name="product-categori"><a href="#">80x120cm (6)</a></li>
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- filter-sub-area end -->
-                    </div>
                     <!--sidebar-categores-box end  -->
                     <!-- category-sub-menu start -->
-                    <div class="sidebar-categores-box mb-sm-0 mb-xs-0">
-                        <div class="sidebar-title">
-                            <h2>Laptop</h2>
-                        </div>
-                        <div class="category-tags">
-                            <ul>
-                                <li><a href="# ">Devita</a></li>
-                                <li><a href="# ">Cameras</a></li>
-                                <li><a href="# ">Sony</a></li>
-                                <li><a href="# ">Computer</a></li>
-                                <li><a href="# ">Big Sale</a></li>
-                                <li><a href="# ">Accessories</a></li>
-                            </ul>
-                        </div>
-                        <!-- category-sub-menu end -->
-                    </div>
                 </div>
             </div>
         </div>
@@ -1036,7 +943,8 @@
 <!-- Main/Activator js -->
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{asset('js/scripts.js')}}"></script>
-
+<script src="https://use.fontawesome.com/c7a898bb34.js"></script>
+<script src="https://kit.fontawesome.com/c3bc39d032.js" crossorigin="anonymous"></script>
 
 </body>
 

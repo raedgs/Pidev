@@ -49,17 +49,42 @@ class Produit
      */
     private $categorie;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="produits")
-     */
-    private $user;
+
 
     /**
      * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="produit")
      */
     private $commandes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PostL::class, mappedBy="post",orphanRemoval=true)
+     */
+    private $likes;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity=PostDislike::class, mappedBy="post")
+     */
+    private $dislikes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="produits")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="produit")
+     */
+    private $promotion;
+
+
     public function __construct()
+    {
+        $this->likes = new ArrayCollection();
+        $this->dislikes = new ArrayCollection();
+    }
+
+    public function ___construct()
     {
         $this->commandes = new ArrayCollection();
     }
@@ -131,17 +156,7 @@ class Produit
         return $this;
     }
 
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
 
-    public function setUser(?user $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Commande[]
@@ -172,6 +187,67 @@ class Produit
 
         return $this;
     }
+    /**
+     * @return Collection|PostL[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+
+    public function addLike(PostL $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setPost($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PostDislike[]
+     */
+    public function getdislikes(): Collection
+    {
+        return $this->dislikes;
+    }
+
+    public function addPostDislike(PostDislike $postDislike): self
+    {
+        if (!$this->dislikes->contains($postDislike)) {
+            $this->dislikes[] = $postDislike;
+            $postDislike->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPromotion(): ?Promotion
+    {
+        return $this->promotion;
+    }
+
+    public function setPromotion(?Promotion $promotion): self
+    {
+        $this->promotion = $promotion;
+
+        return $this;
+    }
+
 
 
     

@@ -116,6 +116,12 @@
                 <p>Categorie</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ path('sta') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Statistique</p>
+              </a>
+            </li>
           </ul>
         </li>
         <li class="nav-item">
@@ -128,9 +134,21 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="pages/charts/uplot.html" class="nav-link">
+              <a href="{{ path('showCom') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>uPlot</p>
+                <p>Commande</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ path('showLiv') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Livraison</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ path('statpro') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Stat</p>
               </a>
             </li>
           </ul>
@@ -145,10 +163,69 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="pages/UI/general.html" class="nav-link">
+              <a href="{{ path('affiche2') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>General</p>
+                <p>Promotion
+                  <i class="fas fa-angle-left right"></i>
+                </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ path('addPromotion') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Promotion</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ path('edit') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Edite Promotion</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ path('affiche2') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>view Promotion</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ path('affiche') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>delet Promotion</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ path('calendary') }}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                      Calendar Promotion
+                      <span class="right badge badge-danger">New</span>
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="{{ path('affichec') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Code Coupon
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ path('addCode') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>add Coden</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ path('affichec') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>afficher Code</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </li>
@@ -162,9 +239,15 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="pages/forms/general.html" class="nav-link">
+              <a href="{{ path('reclamation_index') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>General Elements</p>
+                <p>Reclamation</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ path('reclamation_index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Type</p>
               </a>
             </li>
           </ul>

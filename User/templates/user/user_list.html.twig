@@ -235,6 +235,12 @@
                   <p>Categorie</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ path('sta') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Statistique</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -247,15 +253,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="{{ path('showCom') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Commande</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/uplot.html" class="nav-link">
+                <a href="{{ path('showLiv') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Livraison</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ path('statpro') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stat</p>
                 </a>
               </li>
             </ul>
@@ -346,9 +358,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="{{ path('reclamation_index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
+                  <p>Reclamation</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ path('reclamation_index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Type</p>
                 </a>
               </li>
             </ul>

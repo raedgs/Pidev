@@ -15,8 +15,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Form\ProduitSearchType;
+use App\Repository\PostDislikeRepository;
+use App\Repository\PostLRepository;
+use App\Entity\PostDislike;
+use App\Entity\PostL;
 use App\Entity\ProduitSearch;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 
 class ProduitController extends AbstractController
@@ -45,6 +51,7 @@ class ProduitController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($produit);
             $entityManager->flush();
+            $this->addFlash('addprod', 'Produit Ajouté !!');
 
             return $this->redirectToRoute('showProd');
         }
@@ -67,7 +74,7 @@ class ProduitController extends AbstractController
         return $this->render('produit/showProd.html.twig',array('Produit' => $Produit));
     }
     /**
-     * @Route("/produit", name="home")
+     * @Route("/", name="home")
      */
     public function afficher(Request $request,PaginatorInterface $paginator)
     {
@@ -187,5 +194,91 @@ class ProduitController extends AbstractController
         return $this->render("produit/statistique.html.twig",['Reg'=>$opp]);
 
     }
+    /**
+     * @Route ("/{id}/like",name="post_like")
+     * @param Produit $produit
+     * @param PostLRepository $likeRepo
+     * @return Response
+     */
+    public function like(Produit $produit,PostLRepository $likeRepo):
 
+    Response
+    {
+        $like = $likeRepo->findOneBy([
+            'post' => $produit,
+
+        ]);
+
+        $like = new PostL();
+        $like->setPost($produit);
+        //  ->setUser($user);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($like);
+        $entityManager->flush();
+
+        return $this->json(['code' => 200,
+            'message' => 'like bien ajouté',
+            'likes' => $likeRepo->count(['post' => $produit])], 200);
+
+    }
+
+    /**
+     * @Route ("/{id}/dislike",name="post_dislike")
+     * @param Produit $prod
+     * @param PostDislikeRepository $likeRepo
+     * @return Response
+     */
+    public function Dislike(Produit $prod,PostDislikeRepository $likeRepo):
+
+    Response
+    {
+
+        $dislike = $likeRepo->findOneBy([
+            'post' => $prod,
+
+        ]);
+
+        $dislike = new PostDislike();
+        $dislike->setPost($prod);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($dislike);
+        $entityManager->flush();
+
+        return $this->json([
+            'code' => 200,
+            'message' => 'Dislike',
+            'likes' => $likeRepo->count(['post' => $prod])
+        ], 200);
+
+    }
+
+    /**
+     * @Route("/back/imprimer_prod", name="imprimer_prod")
+     */
+    public function imprimeprod(ProduitRepository $produitRepository): Response
+    {
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($pdfOptions);
+
+        $prod = $produitRepository->findAll();
+
+        $html = $this->renderView('produit/pdfprod.html.twig', [
+            'prod' => $prod,
+        ]);
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        $dompdf->stream("Liste produit.pdf", [
+            "Attachment" => true
+        ]);
+        return $this->redirectToRoute('imprimer_prod');
+    }
 }
