@@ -1,4 +1,7 @@
 {
+    "cmen/google-charts-bundle": {
+        "version": "5.0.0"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -69,8 +72,20 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
+    "knplabs/knp-components": {
+        "version": "v3.4.0"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.8.0"
+    },
     "laminas/laminas-code": {
         "version": "4.5.1"
+    },
+    "laminas/laminas-json": {
+        "version": "3.3.0"
+    },
+    "mercuryseries/flashy-bundle": {
+        "version": "v3.0.0"
     },
     "monolog/monolog": {
         "version": "1.26.1"
@@ -80,6 +95,9 @@
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
+    },
+    "ob/highcharts-bundle": {
+        "version": "1.7"
     },
     "phar-io/manifest": {
         "version": "2.0.3"

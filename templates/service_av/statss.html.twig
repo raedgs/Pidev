@@ -844,34 +844,25 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        {% block title %}ServiceAV{% endblock %}
 
-        {% block body %}
-            <h1>ServiceAV</h1>
-            <input type="text" id="myinput" placeholder="Search..." title="Type in something">
-            <table class="table" >
-                <tbody >
-                <tr>
-                    <th>Id</th>
-                    <td>{{ service_a_v.id }}</td>
-                </tr>
-                <tr>
-                    <th>Nomdeproduit</th>
-                    <td>{{ service_a_v.Nomdeproduit }}</td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td>{{ service_a_v.Description }}</td>
-                </tr>
-                </tbody>
-            </table>
+        <!-- Main content -->
+        {% block title %}stats{% endblock %}
 
-            <a href="{{ path('service_a_v_index') }}">Retour</a>
+        <!-- index.html.twig -->
 
-            <a href="{{ path('service_a_v_edit', {'id': service_a_v.id}) }}">Modifier</a>
+        <html>
 
-            {{ include('service_av/_delete_form.html.twig') }}
-        {% endblock %}
+        <head></head>
+        <body>
+        <div id="div_chart"></div>
+        <a href="{{ path('service_a_v_index') }}">Retour</a>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            {{ gc_draw(piechart, 'div_chart') }}
+        </script>
+
+        </body>
+        </html>
 
 
 

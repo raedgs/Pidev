@@ -47,4 +47,22 @@ class ServiceAVRepository extends ServiceEntityRepository
         ;
     }
     */
+    function diag()
+    {
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager->createQuery('SELECT count(a) from App\Entity\ServiceAV a WHERE (a.typeAV = :type) ')->setParameter('type', '7');
+        return $query->getSingleScalarResult();
+    }
+    function repa()
+    {
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager->createQuery('SELECT count(a) from App\Entity\ServiceAV a WHERE (a.typeAV = :type) ')->setParameter('type', '8');
+        return $query->getSingleScalarResult();
+    }
+    function affi()
+    {
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager->createQuery('SELECT count(a) from App\Entity\ServiceAV a WHERE (a.typeAV = :type) ')->setParameter('type', '9');
+        return $query->getSingleScalarResult();
+    }
 }
