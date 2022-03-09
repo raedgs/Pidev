@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TypeAV{% endblock %}
+
+{% block body %}
+    <h1>Create new TypeAV</h1>
+
+    {{ include('type_av/_form.html.twig') }}
+
+    <a href="{{ path('type_a_v_index') }}">Retour</a>
+{% endblock %}

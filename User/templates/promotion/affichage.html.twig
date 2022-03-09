@@ -1,0 +1,46 @@
+{% extends 'affiche.html.twig' %}
+
+
+{% block title %}Affichage Promotion{% endblock %}
+
+{% block body %}
+    <h1> Affichage  Promotion</h1>
+
+    {# {{form(formC)} #}
+    {{form_start(formC,{'attr': {'novalidate':'novalidate'}})}}
+    {{form_label(formC.dated)}}
+    {{ form_widget (formC.dated)}}
+    {{ form_errors(formC.dated) }}
+    {{form_start(formC,{'attr': {'novalidate':'novalidate'}})}}
+    {{form_label(formC.datef)}}
+    {{ form_widget (formC.datef)}}
+    {{ form_errors(formC.datef) }}
+    {{form_start(formC,{'attr': {'novalidate':'novalidate'}})}}
+    {{form_label(formC.description)}}
+    {{ form_widget (formC.description)}}
+    {{ form_errors(formC.description) }}
+    {{form_start(formC,{'attr': {'novalidate':'novalidate'}})}}
+    {{form_label(formC.pourcentage)}}
+    {{ form_widget (formC.pourcentage)}}
+    {{ form_errors(formC.pourcentage) }}
+    {{form_end(formC)}}
+    <tr>
+        <th>ID</th>
+        <th>date debut</th>
+        <th>date fin</th>
+        <th>description</th>
+        <th>pourcentage</th>
+
+    </tr>
+
+    <tr {% for c in promotion %}
+    <td>{{ c.id }}</td>
+    <td></td>{{c.dated|date('d/m/Y')}}</td>
+    <td></td>{{c.datef|date('d/m/Y')}}</td>
+    <td>{{ c.description }}</td>
+    <td>{{ c.pourcentage }}</td>
+    </tr {% endfor %}>
+
+
+
+{% endblock %}

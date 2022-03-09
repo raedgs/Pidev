@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AddPromotion{% endblock %}
+
+{% block body %}
+
+
+
+{{form_start(formC)}}
+{{form_label(formC.dated)}}
+{{ form_widget (formC.dated)}}
+{{ form_errors(formC.dated)}}
+{{form_label(formC.datef)}}
+{{ form_widget (formC.datef)}}
+{{ form_errors(formC.datef)}}
+{{form_label(formC.description)}}
+{{ form_widget (formC.description)}}
+{{ form_errors(formC.description) }}
+{{form_label(formC.pourcentage)}}
+{{ form_widget (formC.pourcentage)}}
+{{ form_errors(formC.pourcentage) }}
+
+{{form_end(formC)}}
+
+
+{% endblock %}

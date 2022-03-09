@@ -1,0 +1,20 @@
+{% extends 'code_coupone/code.html.twig' %}
+
+{% block title %}AddCode{% endblock %}
+
+{% block body %}
+
+
+     {{form_start(formC)}}
+    {{form_label(formC.id_c)}}
+    {{ form_widget (formC.id_c)}}
+    {{ form_errors(formC.id_c) }}
+    {{form_label(formC.code)}}
+    {{ form_widget (formC.code)}}
+    {{ form_errors(formC.code) }}
+    {{form_label(formC.pourcentage_p)}}
+    {{ form_widget (formC.pourcentage_p)}}
+    {{ form_errors(formC.pourcentage_p) }}
+
+    {{ form_end(formC) }}
+{% endblock %}
