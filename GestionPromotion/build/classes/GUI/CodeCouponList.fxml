@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="left_main" prefHeight="824.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CodeCouponListController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="36.0" layoutX="20.0" layoutY="532.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="146.0" />
+      <TextField fx:id="PourcentageTf" layoutX="200.0" layoutY="525.0" prefHeight="50.0" prefWidth="225.0" promptText="Pourcentage" />
+      <Label layoutX="26.0" layoutY="533.0" prefHeight="34.0" prefWidth="150.0" styleClass="labelform" text="Pourcentage">
+         <font>
+            <Font name="Gill Sans MT" size="25.0" />
+         </font></Label>
+      <Button layoutX="1040.0" layoutY="730.0" mnemonicParsing="false" onAction="#AjouterCodeCoupon" prefHeight="33.0" prefWidth="212.0" styleClass="search-button" stylesheets="@../Value/style.css" text="Ajouter Code Coupon">
+         <font>
+            <Font name="Times New Roman Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_delete" layoutX="50.0" layoutY="730.0" mnemonicParsing="false" onAction="#DeleteCoupon" prefHeight="33.0" prefWidth="102.0" styleClass="search-button" stylesheets="@../Value/style.css" text="Delete">
+         <font>
+            <Font name="Times New Roman Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_edit" layoutX="251.0" layoutY="730.0" mnemonicParsing="false" onAction="#EditCoupon" prefHeight="33.0" prefWidth="102.0" styleClass="search-button" stylesheets="@../Value/style.css" text="Edit">
+         <font>
+            <Font name="Times New Roman Bold" size="19.0" />
+         </font>
+      </Button>
+        
+      <TableView fx:id="CodeCouponTab" layoutX="495.0" layoutY="222.0" onMouseClicked="#fillforum" prefHeight="487.0" prefWidth="578.0">
+        <columns>
+          <TableColumn fx:id="IDCouponTab" prefWidth="169.60003662109375" text="ID Coupon" />
+            <TableColumn fx:id="CodeTab" prefWidth="156.79998779296875" text="Code" />
+          <TableColumn fx:id="PourcentageTab" prefWidth="249.60003662109375" text="Pourcentage" />
+        </columns>
+      </TableView>
+      <Pane layoutX="-23.0" layoutY="-7.0" prefHeight="175.0" prefWidth="1400.0" style="-fx-background-color: BAB7A4;">
+         <children>
+            <ImageView fitHeight="146.0" fitWidth="180.0" layoutX="43.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER" layoutX="1077.0" layoutY="51.0" prefHeight="52.0" prefWidth="310.0" styleClass="search-box" stylesheets="@../Value/style.css">
+               <children>
+                  <TextField fx:id="TFSearch" prefHeight="50.0" prefWidth="180.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../Value/style.css">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <Label layoutX="1099.0" layoutY="128.0" prefHeight="17.0" prefWidth="135.0" text="Nombre Coupon" textFill="#fcf9f9">
+               <font>
+                  <Font name="Century Gothic Italic" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="NombreCoupon" layoutX="1243.0" layoutY="128.0" prefHeight="21.0" prefWidth="87.0" textFill="#fcf9f9">
+               <font>
+                  <Font name="Century Gothic Italic" size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="36.0" layoutX="20.0" layoutY="395.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="146.0" />
+      <Label layoutX="54.0" layoutY="395.0" prefHeight="34.0" prefWidth="78.0" styleClass="labelform" text="Code" textAlignment="CENTER">
+         <font>
+            <Font name="Gill Sans MT" size="24.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f3" height="86.0" layoutX="564.0" layoutY="122.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="5.0" width="388.0" />
+      <Label layoutX="610.0" layoutY="108.0" prefHeight="96.0" prefWidth="296.0" text="Code Coupon" textFill="#edce0b">
+         <font>
+            <Font name="Harlow Solid Italic" size="57.0" />
+         </font>
+      </Label>
+      <TextField fx:id="CodeCouponTf" layoutX="200.0" layoutY="387.0" prefHeight="50.0" prefWidth="225.0" promptText="Code Coupon" />
+      
+   </children>
+</AnchorPane>

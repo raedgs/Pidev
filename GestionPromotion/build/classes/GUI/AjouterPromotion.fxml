@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="left_main" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterPromotionController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="335.0" style="-fx-background-color: D1D0CA;" styleClass="right-bar" stylesheets="@../Value/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox fx:id="chosenhotelCard" alignment="CENTER" prefHeight="110.0" prefWidth="200.0" styleClass="shadow" stylesheets="@../Value/style.css">
+                     <children>
+                        <Label text="BRAIN" textFill="#edce0b">
+                           <font>
+                              <Font name="Cambria Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <Label text="TECH" textFill="#faf9f3">
+                           <font>
+                              <Font name="Cambria Bold" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="310.0" styleClass="search-box" stylesheets="@../Value/style.css">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <TextField prefHeight="50.0" prefWidth="180.0" promptText="Don't Worry we are here" styleClass="transparent" stylesheets="@../Value/style.css">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <BorderPane prefHeight="53.0" prefWidth="385.0" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="484.0" prefWidth="274.0" style="-fx-background-color: BAB7A4;" styleClass="chosen-fruit-card" stylesheets="@../Value/style.css">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <VBox prefHeight="80.0" prefWidth="265.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" translateY="-20.0">
+                                 <image>
+                                    <Image url="@../img/logo.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="12.0" prefWidth="99.0" text="Language" textFill="#c6c1c100">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Separator prefHeight="0.0" prefWidth="241.0" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#Acceuil" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@../Value/style.css" text="Acceuil" translateY="20.0">
+                           <VBox.margin>
+                              <Insets left="45.0" right="40.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <HBox prefHeight="638.0" prefWidth="950.0">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="600.0" prefWidth="967.0" style="-fx-background-color: D1D0CA;" styleClass="transparent" stylesheets="@../Value/style.css" HBox.hgrow="ALWAYS">
+                           <content>
+                              <Pane opacity="0.94" prefHeight="662.0" prefWidth="524.0" style="-fx-background-color: BAB7A4;" styleClass="right-bar" stylesheets="@../Value/style.css" translateX="220.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="57.0" layoutX="168.0" layoutY="78.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="189.0" />
+                                    <TextField fx:id="PourcentageTf" layoutX="168.0" layoutY="78.0" prefHeight="57.0" prefWidth="189.0" promptText="Pourcentage" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="57.0" layoutX="168.0" layoutY="191.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="189.0" />
+                                    <TextField fx:id="DescriptionTf" layoutX="168.0" layoutY="191.0" prefHeight="57.0" prefWidth="189.0" promptText="Description" />
+                                    <Button layoutX="186.0" layoutY="587.0" mnemonicParsing="false" onAction="#Enregister" prefHeight="33.0" prefWidth="153.0" style="-fx-background-color: #796565; -fx-background-radius: 10;" text="Enregister" textFill="#252525">
+                                       <font>
+                                          <Font name="System Bold" size="19.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="182.0" layoutY="-7.0" prefHeight="46.0" prefWidth="203.0" text="Bienvenue">
+                                       <font>
+                                          <Font size="31.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="image_view" fitHeight="150.0" fitWidth="200.0" layoutX="371.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true" />
+                                    <DatePicker fx:id="dateDebut" layoutX="168.0" layoutY="280.0" prefHeight="40.0" prefWidth="189.0" promptText="Date Debut Promotion" />
+                                    <DatePicker fx:id="dateFin" layoutX="168.0" layoutY="346.0" prefHeight="40.0" prefWidth="189.0" promptText="Date Fin Promotion" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="57.0" layoutX="168.0" layoutY="433.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="189.0" />
+                                    <JFXComboBox fx:id="cb_coupon" layoutX="168.0" layoutY="431.0" prefHeight="56.0" prefWidth="191.0" promptText="Code Coupon" />
+                                 </children>
+                              </Pane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#afficherPromotion" prefHeight="41.0" prefWidth="232.0" style="-fx-background-color: #E5E5E7; -fx-background-radius: 10;" text="Afficher Promotion" textFill="#252525" translateX="800.0" translateY="20.0">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+      <Pane layoutX="368.0" prefHeight="64.0" prefWidth="1032.0" style="-fx-background-color: BAB7A4;">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f3" height="46.0" layoutX="338.0" layoutY="31.0" stroke="#0f2b4d" strokeType="OUTSIDE" strokeWidth="5.0" width="328.0" />
+            <Label layoutX="356.0" layoutY="6.0" prefHeight="76.0" prefWidth="306.0" text="Ajouter Promotion" textFill="#edce0b">
+               <font>
+                  <Font name="Harlow Solid Italic" size="38.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>

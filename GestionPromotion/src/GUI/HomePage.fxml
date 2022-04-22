@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="956.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomePageController">
+   <children>
+      <Pane layoutY="174.0" prefHeight="781.0" prefWidth="233.0" style="-fx-background-color: D6D6D6; -fx-border-width: 2; -fx-border-color: #1e2b3c;">
+         <children>
+            <VBox layoutX="12.0" layoutY="18.0" prefHeight="641.0" prefWidth="211.0" spacing="50.0">
+               <children>
+                  <GridPane prefHeight="128.0" prefWidth="239.0" style="-fx-background-color: D6D6D6; -fx-border-width: 3; -fx-border-color: #1e2b3c;" translateY="300.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="81.66667175292969" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="132.3333282470703" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="usernameLabel11" alignment="CENTER" text="Name:" textAlignment="CENTER" textFill="#1e2b3c" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="usernameLabel1" alignment="CENTER" text="BRAINTECH" textAlignment="CENTER" textFill="#1e2b3c" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Comic Sans MS" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </GridPane>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+            </VBox>
+            <JFXButton layoutX="16.0" layoutY="687.0" onAction="#logout" prefHeight="61.0" prefWidth="203.0" text="Log Out" textFill="#1e2b3c">
+               <font>
+                  <Font name="Comic Sans MS" size="25.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <GridPane alignment="CENTER" hgap="50.0" layoutX="253.0" layoutY="213.0" prefHeight="737.0" prefWidth="1127.0" vgap="10.0">
+        <columnConstraints>
+          <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints />
+        </rowConstraints>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <Pane prefHeight="686.0" prefWidth="917.0" style="-fx-background-color: white;" />
+            <ImageView fitHeight="542.0" fitWidth="1064.0" opacity="0.79" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/e-commerce.jpg" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="Promotion" buttonType="RAISED" contentDisplay="TOP" onAction="#goTO_Promotion" opacity="0.8" prefHeight="259.0" prefWidth="361.0" ripplerFill="BLACK" style="-fx-background-color: BAB7A4;" text="Pormotion" textAlignment="CENTER" translateX="100.0">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="51.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="102.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/promotion.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="codeCoupon" buttonType="RAISED" contentDisplay="TOP" onAction="#goTO_CodeCoupon" opacity="0.8" prefHeight="259.0" prefWidth="361.0" ripplerFill="BLACK" style="-fx-background-color: BAB7A4;" text="Code Coupon" textAlignment="CENTER" translateX="600.0">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="48.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="102.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/coupon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </GridPane>
+      <Pane prefHeight="175.0" prefWidth="1400.0" style="-fx-background-color: BAB7A4;">
+         <children>
+            <ImageView fitHeight="146.0" fitWidth="348.0" layoutX="21.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f3" height="100.0" layoutX="499.0" layoutY="111.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="5.0" width="413.0" />
+            <Label layoutX="564.0" layoutY="103.0" text="Home Page" textFill="#edce0b">
+               <font>
+                  <Font name="Harlow Solid Italic" size="57.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>

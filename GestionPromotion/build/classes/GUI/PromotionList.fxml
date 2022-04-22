@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="left_main" prefHeight="824.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PromotionListController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="36.0" layoutX="20.0" layoutY="336.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="146.0" />
+      <TextField fx:id="PourcentageTf" layoutX="200.0" layoutY="329.0" prefHeight="50.0" prefWidth="225.0" promptText="Pourcentage" />
+      <Label layoutX="26.0" layoutY="337.0" prefHeight="34.0" prefWidth="150.0" styleClass="labelform" text="Pourcentage">
+         <font>
+            <Font name="Gill Sans MT" size="25.0" />
+         </font></Label>
+      <Button layoutX="1040.0" layoutY="730.0" mnemonicParsing="false" onAction="#AjouterPromotion" prefHeight="33.0" prefWidth="212.0" styleClass="search-button" stylesheets="@../Value/style.css" text="Ajouter Promotion">
+         <font>
+            <Font name="Times New Roman Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_delete" layoutX="50.0" layoutY="730.0" mnemonicParsing="false" onAction="#DeletePromotion" prefHeight="33.0" prefWidth="102.0" styleClass="search-button" stylesheets="@../Value/style.css" text="Delete">
+         <font>
+            <Font name="Times New Roman Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_edit" layoutX="251.0" layoutY="730.0" mnemonicParsing="false" onAction="#EditPromotion" prefHeight="33.0" prefWidth="102.0" styleClass="search-button" stylesheets="@../Value/style.css" text="Edit">
+         <font>
+            <Font name="Times New Roman Bold" size="19.0" />
+         </font>
+      </Button>
+        
+      <TableView fx:id="PromotionTab" layoutX="495.0" layoutY="222.0" onMouseClicked="#fillforum" prefHeight="487.0" prefWidth="791.0">
+        <columns>
+          <TableColumn fx:id="IDPromotionTab" prefWidth="93.60003662109375" text="ID Promotion" />
+            <TableColumn fx:id="DescriptionTab" prefWidth="192.800048828125" text="Description" />
+          <TableColumn fx:id="PourcentageTab" prefWidth="88.800048828125" text="Pourcentage" />
+            <TableColumn fx:id="CodeCouponTab" minWidth="0.0" prefWidth="108.0" text="Code Coupon" />
+            <TableColumn fx:id="DateDebutTab" prefWidth="148.7999267578125" text="Date Debut Promotion" />
+            <TableColumn fx:id="DateFinTab" prefWidth="139.9998779296875" text="Date Fin Promotion" />
+        </columns>
+      </TableView>
+      <Pane layoutX="-23.0" layoutY="-7.0" prefHeight="175.0" prefWidth="1400.0" style="-fx-background-color: BAB7A4;">
+         <children>
+            <ImageView fitHeight="146.0" fitWidth="180.0" layoutX="43.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER" layoutX="1077.0" layoutY="51.0" prefHeight="52.0" prefWidth="310.0" styleClass="search-box" stylesheets="@../Value/style.css">
+               <children>
+                  <TextField fx:id="TFSearch" prefHeight="50.0" prefWidth="180.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../Value/style.css">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <Label layoutX="1099.0" layoutY="128.0" prefHeight="17.0" prefWidth="135.0" text="Nombre Promotion" textFill="#fcf9f9">
+               <font>
+                  <Font name="Century Gothic Italic" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="NombrePromotion" layoutX="1243.0" layoutY="128.0" prefHeight="21.0" prefWidth="87.0" textFill="#fcf9f9">
+               <font>
+                  <Font name="Century Gothic Italic" size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="36.0" layoutX="20.0" layoutY="422.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="146.0" />
+      <Label layoutX="26.0" layoutY="423.0" prefHeight="34.0" prefWidth="135.0" styleClass="labelform" text="Code Coupon">
+         <font>
+            <Font name="Gill Sans MT" size="22.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="36.0" layoutX="16.0" layoutY="524.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="146.0" />
+      <Label layoutX="24.0" layoutY="524.0" prefHeight="34.0" prefWidth="135.0" styleClass="labelform" text="Date Debut">
+         <font>
+            <Font name="Gill Sans MT" size="26.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="36.0" layoutX="20.0" layoutY="617.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="146.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="36.0" layoutX="20.0" layoutY="230.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="146.0" />
+      <Label layoutX="33.0" layoutY="230.0" prefHeight="34.0" prefWidth="128.0" styleClass="labelform" text="Description">
+         <font>
+            <Font name="Gill Sans MT" size="24.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f3" height="86.0" layoutX="564.0" layoutY="122.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="5.0" width="388.0" />
+      <Label layoutX="640.0" layoutY="106.0" prefHeight="96.0" prefWidth="271.0" text="Promotion" textFill="#edce0b">
+         <font>
+            <Font name="Harlow Solid Italic" size="57.0" />
+         </font>
+      </Label>
+      <TextField fx:id="DescriptionTf" layoutX="200.0" layoutY="222.0" prefHeight="50.0" prefWidth="225.0" promptText="Description" />
+      <Button fx:id="Statistique" layoutX="444.0" layoutY="730.0" mnemonicParsing="false" onAction="#Statistique" prefHeight="33.0" prefWidth="135.0" styleClass="search-button" stylesheets="@../Value/style.css" text="Statistique">
+         <font>
+            <Font name="Times New Roman Bold" size="19.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="dateDebut" layoutX="196.0" layoutY="521.0" prefHeight="40.0" prefWidth="225.0" promptText="Date Debut Promotion" />
+      <DatePicker fx:id="dateFin" layoutX="200.0" layoutY="615.0" prefHeight="40.0" prefWidth="225.0" promptText="Date Fin Promotion" />
+      <Label layoutX="30.0" layoutY="618.0" prefHeight="34.0" prefWidth="135.0" styleClass="labelform" text="Date Fin">
+         <font>
+            <Font name="Gill Sans MT" size="26.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cb_coupon" layoutX="196.0" layoutY="412.0" prefHeight="56.0" prefWidth="225.0" promptText="Code Coupon" />
+      
+   </children>
+</AnchorPane>
