@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="527.0" prefWidth="695.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="projet.views.AfficheReclamationController">
+   <children>
+      <AnchorPane fx:id="report88" layoutX="10.0" layoutY="10.0" prefHeight="442.0" prefWidth="762.0" style="-fx-background-color: blu;">
+         <children>
+            <TableView fx:id="AffReclamation" layoutY="137.0" onMouseClicked="#onTableItemSelect" prefHeight="304.0" prefWidth="747.0">
+               <columns>
+                  <TableColumn fx:id="id" prefWidth="152.80001527071" text="id" />
+                  <TableColumn fx:id="type" prefWidth="152.80001527071" text="Type" />
+                  <TableColumn fx:id="etat" prefWidth="177.59999084472656" text="Etat" />
+                  <TableColumn fx:id="desc" prefWidth="259.2000427246094" text="Description" />
+               </columns>
+            </TableView>
+         </children>
+         <padding>
+            <Insets bottom="-30.0" top="-60.0" />
+         </padding>
+      </AnchorPane>
+      <Button layoutX="14.0" layoutY="450.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: red;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="473.0" layoutY="449.0" mnemonicParsing="false" onAction="#genererPdf" prefHeight="39.0" prefWidth="207.0" style="-fx-background-color: green;" text="Generer Pdf" textFill="#efe6e6">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Text fx:id="msj" fill="#0c8434" layoutX="260.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="174.91815185546875">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <TextField fx:id="recherche" layoutX="2.0" layoutY="100.0" prefHeight="26.0" prefWidth="287.0" promptText="Recherche" />
+      <Button layoutX="510.0" layoutY="100.0" mnemonicParsing="false" onAction="#AjouterType" text="Ajouter Type" />
+      <Button layoutX="338.0" layoutY="100.0" mnemonicParsing="false" onAction="#ListeType" prefHeight="26.0" prefWidth="126.0" text="Liste des Types" />
+   </children>
+</AnchorPane>
